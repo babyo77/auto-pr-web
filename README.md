@@ -25,7 +25,7 @@ Auto PR Web is a powerful tool that helps developers generate complete, professi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/auto-pr-web.git
+   git clone https://github.com/babyo77/auto-pr-web.git
    cd auto-pr-web
    ```
 
@@ -83,6 +83,3 @@ The Chrome extension allows users to generate pull requests directly from their 
 1. Visit our website and click "Add to Chrome"
 2. Or install from the Chrome Web Store (link coming soon)
 
-## Contact
-
-For support or questions about Auto PR Web, please [contact us](mailto:your-email@example.com).
