@@ -1,6 +1,20 @@
+"use client";
 import { Logo } from "@/components/logo";
 import Link from "next/link";
 import { Chrome, Github } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useAuth } from "@/lib/AuthContext";
 
 const links = [
   {
@@ -12,8 +26,8 @@ const links = [
     href: "/pricing",
   },
   {
-    title: "Help",
-    href: "https://x.com/tanmay7_",
+    title: "Support",
+    href: "",
   },
   {
     title: "Github",
@@ -22,6 +36,33 @@ const links = [
 ];
 
 export default function FooterSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { user } = useAuth();
+  const openSupportModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
+
+  const closeModal = async () => {
+    const name = (document.getElementById("name") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const message = (document.getElementById("message") as HTMLTextAreaElement)
+      .value;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SCI_URI}/support`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-zara-auth": (await user?.getIdToken()) || "",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+    if (res.ok) {
+      toast.success("Message sent successfully");
+    }
+    setIsModalOpen(false);
+  };
+
   return (
     <footer className="py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
@@ -35,6 +76,7 @@ export default function FooterSection() {
               key={index}
               href={link.href}
               className="text-muted-foreground hover:text-primary block duration-150"
+              onClick={link.title === "Support" ? openSupportModal : undefined}
             >
               <span>{link.title}</span>
             </Link>
@@ -42,7 +84,7 @@ export default function FooterSection() {
         </div>
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           <Link
-            href="#"
+            href="https://x.com/tanmay7_"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X/Twitter"
@@ -62,7 +104,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="#"
+            href="https://github.com/babyo77/auto-pr-web"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -84,6 +126,61 @@ export default function FooterSection() {
           {" "}
           © {new Date().getFullYear()} Tanmay, All rights reserved
         </span>
+
+        {/* Support Modal with Shadcn UI */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader className="mb-0">
+              <DialogTitle className="text-xl font-semibold">
+                Contact Support
+              </DialogTitle>
+            </DialogHeader>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                closeModal();
+              }}
+              className=" space-y-4 *:space-y-2"
+            >
+              <div>
+                <Label htmlFor="name" className="text-xs font-semibold">
+                  Full name
+                </Label>
+                <Input
+                  defaultValue={user?.displayName || ""}
+                  id="name"
+                  required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="email" className="text-xs font-semibold">
+                  Work Email
+                </Label>
+                <Input
+                  defaultValue={user?.email || ""}
+                  id="email"
+                  type="email"
+                  required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="message" className="text-xs font-semibold">
+                  Message
+                </Label>
+                <Textarea id="message" rows={3} required />
+              </div>
+
+              <div className="pt-2">
+                <Button type="submit" className="w-full">
+                  Submit
+                </Button>
+              </div>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
     </footer>
   );

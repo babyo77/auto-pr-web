@@ -40,14 +40,17 @@ export default function Pricing() {
     try {
       setIsLoading(true);
       const token = await user?.getIdToken();
-      const response = await fetch("/api/upgrade", {
-        method: "POST",
-        body: JSON.stringify({ isYearly }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SCI_URI}/sci/upgrade`,
+        {
+          method: "POST",
+          body: JSON.stringify({ isYearly }),
+          headers: {
+            "Content-Type": "application/json",
+            "x-sci-auth": `${token}`,
+          },
+        }
+      );
       if (!response.ok) throw new Error("Failed to create order");
       const data = await response.json();
       const options = {

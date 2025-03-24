@@ -26,5 +26,5 @@ export async function DELETE() {
   const cookieStore = await cookies();
   cookieStore.delete("zara-auth");
 
-  return NextResponse.json({ message: "Logged out" }, { status: 200 });
+  return NextResponse.json({}, { status: 200 });
 }

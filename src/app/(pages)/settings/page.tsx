@@ -18,7 +18,7 @@ import Link from "next/link";
 export default function SettingsPage() {
   const { user, billing } = useAuth();
 
-  if (!user) {
+  if (!user || !billing) {
     return (
       <div className="container flex justify-center items-center h-[calc(100vh-10rem)] tracking-tighter leading-tight py-16 md:py-32 mx-auto max-w-6xl p-6">
         <div className="mb-8">Loading...</div>
@@ -56,7 +56,7 @@ export default function SettingsPage() {
             </div>
           </CardContent>
           <CardFooter className="-mt-2 -ml-1">
-            <Button size={"sm"} variant="destructive" onClick={() => signOut()}>
+            <Button size={"sm"} variant="outline" onClick={() => signOut()}>
               Logout
             </Button>
           </CardFooter>
