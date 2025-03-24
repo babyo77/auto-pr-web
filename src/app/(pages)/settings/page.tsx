@@ -20,7 +20,7 @@ export default function SettingsPage() {
 
   if (!user || !billing) {
     return (
-      <div className="container flex justify-center items-center h-[calc(100vh-10rem)] tracking-tighter leading-tight py-16 md:py-32 mx-auto max-w-6xl p-6">
+      <div className="container flex justify-center items-center h-[calc(100vh-30rem)] tracking-tighter leading-tight py-16 md:py-32 mx-auto max-w-6xl p-6">
         <div className="mb-8">Loading...</div>
       </div>
     );
