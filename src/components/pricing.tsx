@@ -23,7 +23,7 @@ declare global {
 
 export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
-  const { user } = useAuth();
+  const { user, billing } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -39,12 +39,13 @@ export default function Pricing() {
   const handlePayment = async () => {
     try {
       setIsLoading(true);
+      const token = await user?.getIdToken();
       const response = await fetch("/api/upgrade", {
         method: "POST",
         body: JSON.stringify({ isYearly }),
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${await user?.getIdToken()}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       if (!response.ok) throw new Error("Failed to create order");
@@ -61,11 +62,22 @@ export default function Pricing() {
             orderId: data.orderId,
             paymentId: response.razorpay_payment_id,
             signature: response.razorpay_signature,
+            planId: data.planId,
+            currency: data.currency,
+            amount: data.amount,
+            description: data.description,
           };
-          const verifyResponse = await fetch("/api/upgrade/verify", {
-            method: "POST",
-            body: JSON.stringify(paymentData),
-          });
+          const verifyResponse = await fetch(
+            `${process.env.NEXT_PUBLIC_SCI_URI}/sci/verify`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "x-sci-auth": `${token}`,
+              },
+              body: JSON.stringify(paymentData),
+            }
+          );
           if (!verifyResponse.ok) throw new Error("Failed to verify payment");
 
           toast.success("Payment successful");
@@ -96,7 +108,7 @@ export default function Pricing() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl space-y-6 text-center">
           <h1 className="text-center text-4xl font-semibold lg:text-5xl">
-            Simple Pricing
+            Pricing
           </h1>
           <p>
             Choose the plan that fits your PR workflow needs. From occasional
@@ -180,13 +192,17 @@ export default function Pricing() {
                 <Button asChild className="mt-4 w-full">
                   <Link href="/login">Get Started</Link>
                 </Button>
-              ) : (
+              ) : billing?.subscriptionTier !== "PRO" ? (
                 <Button
                   onClick={handlePayment}
                   className="mt-4 w-full cursor-pointer"
                   disabled={isLoading}
                 >
                   {isLoading ? "Processing..." : "Upgrade Now"}
+                </Button>
+              ) : (
+                <Button disabled className="mt-4 w-full cursor-pointer">
+                  Already a Pro
                 </Button>
               )}
             </CardHeader>

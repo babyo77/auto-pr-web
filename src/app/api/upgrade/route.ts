@@ -71,6 +71,7 @@ export async function POST(request: NextRequest) {
       currency: currency,
       isIndian: isIndian,
       name: "m3",
+      planId: isYearly ? "yearly" : "monthly",
       description: isYearly ? "Yearly Subscription" : "Monthly Subscription",
     });
   } catch (error) {

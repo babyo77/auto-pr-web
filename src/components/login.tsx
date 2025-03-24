@@ -16,7 +16,7 @@ export default function LoginPage() {
     try {
       setIsLoading(true);
       await signInWithGoogle();
-      // Redirect user after successful login
+
       router.push("/settings"); // Adjust the redirect path as needed
     } catch (error) {
       console.error("Login failed:", error);

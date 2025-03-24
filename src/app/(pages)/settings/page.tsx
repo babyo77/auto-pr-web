@@ -14,18 +14,16 @@ import { Label } from "@/components/ui/label";
 import { signOut } from "@/lib/auth";
 import { useAuth } from "@/lib/AuthContext";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+
 export default function SettingsPage() {
-  const { user } = useAuth();
-  const router = useRouter();
-  useEffect(() => {
-    if (!user) {
-      router.push("/login");
-    }
-  }, [user, router]);
+  const { user, billing } = useAuth();
+
   if (!user) {
-    return <div>Loading...</div>;
+    return (
+      <div className="container flex justify-center items-center h-[calc(100vh-10rem)] tracking-tighter leading-tight py-16 md:py-32 mx-auto max-w-6xl p-6">
+        <div className="mb-8">Loading...</div>
+      </div>
+    );
   }
   return (
     <div className="container py-16 md:py-32 mx-auto max-w-6xl p-6">
@@ -70,34 +68,66 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg">Account</CardTitle>
               <span className="text-sm bg-secondary px-2 py-0.5 rounded-md">
-                Free Plan
+                {billing?.subscriptionTier} Plan
               </span>
             </div>
             <CardDescription className="-mt-0.5 text-sm">
-              3 PR Message Generations Left
+              {billing?.subscriptionTier === "FREE"
+                ? `${
+                    Number(billing?.prGenerationCount ?? 0) > 3
+                      ? "Unlimited"
+                      : 3 - Number(billing?.prGenerationCount ?? 0)
+                  } PR Message Generations Left`
+                : "Unlimited PR Message Generations"}
             </CardDescription>
           </CardHeader>
           <CardContent className="-pt-3 space-y-3">
             <div>
               <div className="flex justify-between mb-1 text-sm">
                 <span className="text-muted-foreground">Usage</span>
-                <span>0 / 3</span>
+                <span>
+                  {billing?.prGenerationCount} /{" "}
+                  {billing?.subscriptionTier === "FREE" ? 3 : "∞"}
+                </span>
               </div>
               <div className="h-2.5 bg-secondary rounded-full">
                 <div
                   className="h-2.5 bg-primary rounded-full transition-all"
-                  style={{ width: "0%" }}
+                  style={{
+                    width:
+                      billing?.subscriptionTier === "FREE"
+                        ? `${Math.min(
+                            100,
+                            ((billing?.prGenerationCount ?? 0) / 3) * 100
+                          )}%`
+                        : "100%",
+                  }}
                 />
               </div>
             </div>
 
-            <Button size={"sm"} variant="default">
-              <Link href="/pricing?p=true">UPGRADE TO PRO</Link>
+            <Button
+              disabled={billing?.subscriptionTier === "PRO"}
+              size={"sm"}
+              variant="default"
+            >
+              {billing?.subscriptionTier === "PRO" ? (
+                <p>Already a Pro</p>
+              ) : (
+                <Link href="/pricing?p=true">UPGRADE TO PRO</Link>
+              )}
             </Button>
 
-            <p className="text-muted-foreground text-xs">
-              Upgrade to get unlimited PR messages
-            </p>
+            {billing?.subscriptionTier === "FREE" && (
+              <p className="text-muted-foreground text-xs">
+                Upgrade to get unlimited PR messages
+              </p>
+            )}
+            {billing?.subscriptionTier === "PRO" && (
+              <p className="text-muted-foreground text-xs">
+                Enjoy unlimited PR message generations
+              </p>
+            )}
           </CardContent>
         </Card>
       </div>
