@@ -37,6 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         if (user) {
           const token = await user.getIdToken();
+          localStorage.setItem("xach", user.uid);
           await fetch("/api/auth", {
             method: "POST",
             body: JSON.stringify({ token }),
@@ -68,6 +69,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           await fetch("/api/auth", {
             method: "DELETE",
           });
+          await fetch(
+            `${
+              process.env.NEXT_PUBLIC_SCI_URI
+            }/sci/logout?uid=${localStorage.getItem("xach")}`,
+            {
+              method: "DELETE",
+            }
+          );
+          localStorage.removeItem("xach");
           throw new Error("User not found");
         }
       } catch (error) {
