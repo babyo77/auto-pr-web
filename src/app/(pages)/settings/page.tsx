@@ -92,7 +92,12 @@ export default function SettingsPage() {
               </div>
               <div className="h-2.5 bg-secondary rounded-full">
                 <div
-                  className="h-2.5 bg-primary rounded-full transition-all"
+                  className={`h-2.5 rounded-full transition-all ${
+                    billing?.subscriptionTier === "FREE" &&
+                    (billing?.prGenerationCount ?? 0) >= 2
+                      ? "bg-red-500"
+                      : "bg-primary"
+                  }`}
                   style={{
                     width:
                       billing?.subscriptionTier === "FREE"
