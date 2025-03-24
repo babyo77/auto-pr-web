@@ -17,7 +17,7 @@ const links = [
   },
   {
     title: "Github",
-    href: "#",
+    href: "https://github.com/babyo77/auto-pr-web",
   },
 ];
 

@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto PR Web
+
+![Auto PR Web](https://i.pinimg.com/originals/c4/7b/9a/c47b9a94986b92ac592745ad3a1b8815.gif)
+
+## Overview
+
+Auto PR Web is a powerful tool that helps developers generate complete, professional pull requests automatically. Our Chrome extension can save you approximately 30 minutes per PR by streamlining the documentation process.
+
+## Features
+
+- **Automatic PR Generation**: Write pull requests in seconds
+- **Chrome Extension**: Easy-to-use browser integration
+- **Time-Saving**: Save an average of 30 minutes per pull request
+- **Professional Output**: Generate well-structured, comprehensive pull requests
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (v20 or newer)
+- pnpm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/auto-pr-web.git
+   cd auto-pr-web
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file based on the provided example.
+
+4. Run the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+## Technology Stack
+
+- **Framework**: Next.js 15
+- **UI Library**: React 19
+- **Styling**: TailwindCSS 4
+- **Authentication**: Firebase
+- **Payment Processing**: Razorpay
+- **UI Components**: Radix UI
+
+## Project Structure
+
+```
+auto-pr-web/
+├── src/
+│   ├── app/             # Next.js app router
+│   ├── components/      # Reusable UI components
+│   └── lib/             # Utility functions and libraries
+├── public/              # Static assets
+└── ...config files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build the application for production:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+pnpm start
+```
 
-## Learn More
+## Chrome Extension
 
-To learn more about Next.js, take a look at the following resources:
+The Chrome extension allows users to generate pull requests directly from their GitHub interface. To get the extension:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Visit our website and click "Add to Chrome"
+2. Or install from the Chrome Web Store (link coming soon)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For support or questions about Auto PR Web, please [contact us](mailto:your-email@example.com).

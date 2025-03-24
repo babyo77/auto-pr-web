@@ -8,7 +8,7 @@ import { useAuth } from "@/lib/AuthContext";
 const menuItems = [
   { name: "Features", href: "/features" },
   { name: "Pricing", href: "/pricing" },
-  { name: "Github", href: "#" },
+  { name: "Github", href: "https://github.com/babyo77/auto-pr-web" },
 ];
 
 export const HeroHeader = () => {

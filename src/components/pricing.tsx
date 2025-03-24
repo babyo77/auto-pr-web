@@ -56,8 +56,20 @@ export default function Pricing() {
         name: data.name,
         description: data.description,
         order_id: data.orderId,
-        handler: (response: any) => {
-          console.log(response);
+        handler: async (response: any) => {
+          const paymentData = {
+            orderId: data.orderId,
+            paymentId: response.razorpay_payment_id,
+            signature: response.razorpay_signature,
+          };
+          const verifyResponse = await fetch("/api/upgrade/verify", {
+            method: "POST",
+            body: JSON.stringify(paymentData),
+          });
+          if (!verifyResponse.ok) throw new Error("Failed to verify payment");
+
+          toast.success("Payment successful");
+          window.location.href = "/settings";
         },
         prefill: {
           name: user?.displayName,
@@ -71,7 +83,9 @@ export default function Pricing() {
       const razorpay = new window.Razorpay(options);
       razorpay.open();
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error(
+        error instanceof Error ? error.message : "Something went wrong"
+      );
     } finally {
       setIsLoading(false);
     }
