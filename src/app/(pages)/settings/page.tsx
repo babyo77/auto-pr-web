@@ -1,5 +1,6 @@
 "use client";
 
+import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,7 +21,7 @@ export default function SettingsPage() {
 
   if (!user || !billing) {
     return (
-      <div className="container flex justify-center items-center h-[calc(100vh-30rem)] tracking-tighter leading-tight py-16 md:py-32 mx-auto max-w-6xl p-6">
+      <div className="container flex justify-center items-center h-[calc(100vh-15rem)] tracking-tighter leading-tight py-16 md:py-32 mx-auto max-w-6xl p-6">
         <div className="mb-8">Loading...</div>
       </div>
     );
@@ -63,7 +64,10 @@ export default function SettingsPage() {
         </Card>
 
         {/* Account */}
-        <Card>
+        <Card className=" relative">
+          {billing?.subscriptionTier === "PRO" && (
+            <BorderBeam duration={8} size={100} />
+          )}
           <CardHeader className="pb-0">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg">Account</CardTitle>
@@ -115,6 +119,11 @@ export default function SettingsPage() {
               disabled={billing?.subscriptionTier === "PRO"}
               size={"sm"}
               variant="default"
+              className={`${
+                billing?.subscriptionTier !== "PRO"
+                  ? "animate-pulse shadow-lg shadow-primary/50 hover:shadow-primary/70 transition-all"
+                  : ""
+              }`}
             >
               {billing?.subscriptionTier === "PRO" ? (
                 <p>Already a Pro</p>
