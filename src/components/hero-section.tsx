@@ -56,16 +56,17 @@ export default function HeroSection() {
       {showDemo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
           <div className="relative w-full max-w-4xl px-4">
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
-              <iframe
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black hover:[&>button]:flex">
+              <video
                 className="absolute inset-0 h-full w-full"
-                src="https://www.youtube.com/watch?v=DIsIRbUrCP8"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
+                src="https://us-east-1.tixte.net/uploads/tanmay111-files.tixte.co/PR_AI_Video.mp4"
+                controls
+                preload="auto"
+                autoPlay
               />
               <button
                 onClick={() => setShowDemo(false)}
-                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-black/80 text-sm text-white hover:bg-black/90"
+                className="absolute right-3 top-3 h-8 w-8 hidden items-center justify-center rounded-full bg-black/80 text-sm text-white cursor-pointer hover:bg-black/90"
                 aria-label="Close demo"
               >
                 ✕
