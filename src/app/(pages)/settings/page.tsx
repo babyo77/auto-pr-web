@@ -120,7 +120,7 @@ export default function SettingsPage() {
               size={"sm"}
               variant="default"
             >
-              {billing?.subscriptionTier !== "PRO" ? (
+              {billing?.subscriptionTier === "PRO" ? (
                 <span>Already on PRO</span>
               ) : (
                 <Link href="/pricing?p=true">UPGRADE TO PRO</Link>
