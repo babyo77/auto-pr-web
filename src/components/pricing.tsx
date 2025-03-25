@@ -51,7 +51,7 @@ export default function Pricing() {
           },
         }
       );
-      if (!response.ok) throw new Error("Failed to create order");
+      if (!response.ok) throw new Error("Something went wrong");
       const data = await response.json();
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
