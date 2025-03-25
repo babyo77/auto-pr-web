@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
           );
           localStorage.removeItem("xach");
-          throw new Error("User not found");
+          if (pathname.startsWith("/settings")) router.push("/login");
         }
       } catch (error) {
         if (pathname.startsWith("/settings")) router.push("/login");
