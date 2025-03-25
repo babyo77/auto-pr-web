@@ -119,11 +119,6 @@ export default function SettingsPage() {
               disabled={billing?.subscriptionTier === "PRO"}
               size={"sm"}
               variant="default"
-              className={`${
-                billing?.subscriptionTier !== "PRO"
-                  ? "animate-pulse shadow-lg shadow-primary/50 hover:shadow-primary/70 transition-all"
-                  : ""
-              }`}
             >
               {billing?.subscriptionTier === "PRO" ? (
                 <p>Already a Pro</p>
