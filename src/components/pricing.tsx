@@ -22,7 +22,7 @@ declare global {
 }
 
 export default function Pricing() {
-  const [isYearly, setIsYearly] = useState(false);
+  const [isYearly, setIsYearly] = useState(true);
   const { user, billing } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -114,8 +114,8 @@ export default function Pricing() {
             Pricing
           </h1>
           <p>
-            Choose the plan that fits your PR workflow needs. From occasional
-            use to daily development.
+            Choose the plan that fits your PR workflow needs.
+            <br /> From occasional use to daily development.
           </p>
 
           <div className="flex items-center justify-center space-x-3 pt-4">
@@ -130,7 +130,7 @@ export default function Pricing() {
             <Label htmlFor="billing-toggle" className="font-medium">
               Yearly
               <span className="ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                Save 33%
+                Save 25%
               </span>
             </Label>
           </div>
@@ -139,16 +139,19 @@ export default function Pricing() {
         <div className="mt-8 grid gap-6 md:mt-16 md:grid-cols-3">
           <Card>
             <CardHeader>
-              <CardTitle className="font-medium">Free</CardTitle>
+              <CardTitle className="font-medium">Hobby</CardTitle>
 
               <span className="my-3 block text-2xl font-semibold">$0</span>
 
               <CardDescription className="text-sm">
                 Perfect for occasional PRs
               </CardDescription>
-              <Button asChild variant="outline" className="mt-4 w-full">
-                <Link href="/login">Get Started</Link>
+              <Button asChild variant="default" className="mt-4 w-full">
+                <Link href="/login">Try for Free</Link>
               </Button>
+              <span className="text-[11px] text-center -mb-4 text-muted-foreground">
+                No credit card required
+              </span>
             </CardHeader>
 
             <CardContent className="space-y-4">
@@ -182,43 +185,71 @@ export default function Pricing() {
             </CardContent>
           </Card>
 
-          <Card className="relative">
-            <span className="bg-linear-to-br/increasing absolute inset-x-0 -top-3 mx-auto flex h-6 w-fit items-center rounded-full from-purple-400 to-amber-300 px-3 py-1 text-xs font-medium text-amber-950 ring-1 ring-inset ring-white/20 ring-offset-1 ring-offset-gray-950/5">
-              Popular
+          <Card className="relative bg-black text-white">
+            <span className="absolute inset-x-0 -top-3 mx-auto flex h-6 w-fit items-center rounded-full bg-black px-3 py-1 text-xs font-medium text-white ring-1 ring-inset ring-white/20 ring-offset-1 ring-offset-gray-950/5">
+              Most Popular
             </span>
 
             <CardHeader>
-              <CardTitle className="font-medium">Pro</CardTitle>
+              <CardTitle className="font-medium text-white">
+                Professional
+              </CardTitle>
 
-              <span className="my-3 block text-2xl font-semibold">
-                ${isYearly ? "2.67" : "3.99"} {isYearly ? "/ mo" : "/ mo"}
-                {isYearly && (
-                  <span className="text-sm text-muted-foreground">
-                    {" "}
-                    billed annually
-                  </span>
-                )}
-              </span>
+              <div className="my-3 block text-2xl font-semibold text-white">
+                <div className="relative h-9 overflow-hidden">
+                  <div
+                    className={`absolute transform transition-all duration-300 ${
+                      isYearly
+                        ? "translate-y-0 opacity-100"
+                        : "-translate-y-full opacity-0"
+                    }`}
+                  >
+                    <span className="line-through text-base text-gray-400">
+                      $3.99
+                    </span>{" "}
+                    <span>$2.99</span> / mo
+                    <span className="text-sm text-gray-400">
+                      {" "}
+                      billed annually
+                    </span>
+                  </div>
+                  <div
+                    className={`absolute transform transition-all duration-300 ${
+                      isYearly
+                        ? "translate-y-full opacity-0"
+                        : "translate-y-0 opacity-100"
+                    }`}
+                  >
+                    <span>$3.99</span> / mo
+                  </div>
+                </div>
+              </div>
 
-              <CardDescription className="text-sm">
+              <CardDescription className="text-sm text-gray-400">
                 For active developers
               </CardDescription>
 
               {!user ? (
-                <Button asChild className="mt-4 w-full">
+                <Button
+                  asChild
+                  className="mt-4 w-full bg-white text-black hover:bg-gray-200"
+                >
                   <Link href="/login">Get Started</Link>
                 </Button>
               ) : billing?.subscriptionTier !== "PRO" ? (
                 <Button
                   onClick={handlePayment}
-                  className="mt-4 w-full cursor-pointer"
+                  className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
                   disabled={isLoading}
                 >
                   {isLoading ? "Processing..." : "Upgrade Now"}
                 </Button>
               ) : (
-                <Button disabled className="mt-4 w-full cursor-pointer">
-                  Already a Pro
+                <Button
+                  disabled
+                  className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
+                >
+                  Already Purchased
                 </Button>
               )}
             </CardHeader>
@@ -229,7 +260,7 @@ export default function Pricing() {
               <ul className="list-outside space-y-3 text-sm">
                 {[
                   {
-                    text: "Unlimited PR Message Generations",
+                    text: "Multiple PR Message Generations",
                     status: "available",
                   },
                   { text: "Auto-Fill PR Description", status: "available" },
@@ -261,11 +292,7 @@ export default function Pricing() {
             </CardContent>
           </Card>
 
-          <Card className="relative border-dashed border-muted-foreground/30">
-            <span className="absolute inset-x-0 -top-3 mx-auto flex h-6 w-fit items-center rounded-full bg-amber-200 px-3 py-1 text-xs font-medium text-amber-950">
-              Coming Soon
-            </span>
-
+          <Card className="relative">
             <CardHeader>
               <CardTitle className="font-medium">Enterprise</CardTitle>
 
@@ -275,8 +302,14 @@ export default function Pricing() {
                 For teams and organizations
               </CardDescription>
 
-              <Button variant="outline" className="mt-4 w-full" disabled>
-                Coming Soon
+              <Button asChild variant="default" className="mt-4 w-full">
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://cal.com/m3agency"
+                >
+                  Talk to Us
+                </Link>
               </Button>
             </CardHeader>
 
@@ -285,7 +318,7 @@ export default function Pricing() {
 
               <ul className="list-outside space-y-3 text-sm text-muted-foreground">
                 {[
-                  "Everything in Pro Plan",
+                  "Everything in Professional Plan",
                   "Unlimited Team Members",
                   "Direct GitHub Integration",
                   "Diagram Generation",
