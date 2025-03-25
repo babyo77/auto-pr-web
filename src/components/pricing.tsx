@@ -218,6 +218,7 @@ export default function Pricing() {
                   "Unlimited PR Message Generations",
                   "Auto-Fill PR Description",
                   "One-Click Generation",
+                  "Readme Generation (Coming Soon)",
                   "Priority Support",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
