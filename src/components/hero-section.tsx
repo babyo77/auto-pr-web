@@ -58,6 +58,7 @@ export default function HeroSection() {
           <div className="relative w-full max-w-4xl px-4">
             <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black hover:[&>button]:flex">
               <video
+                poster="/og-image.png"
                 className="absolute inset-0 h-full w-full"
                 src="https://us-east-1.tixte.net/uploads/tanmay111-files.tixte.co/PR_AI_Video.mp4"
                 controls
