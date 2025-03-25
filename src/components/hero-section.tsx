@@ -59,7 +59,7 @@ export default function HeroSection() {
             <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
               <iframe
                 className="absolute inset-0 h-full w-full"
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1"
+                src="https://www.youtube.com/watch?v=DIsIRbUrCP8"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />
