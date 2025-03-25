@@ -115,17 +115,11 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <Button
-              disabled={billing?.subscriptionTier === "PRO"}
-              size={"sm"}
-              variant="default"
-            >
-              {billing?.subscriptionTier === "PRO" ? (
-                <p>Already a Pro</p>
-              ) : (
+            {billing?.subscriptionTier !== "PRO" && (
+              <Button size={"sm"} variant="default">
                 <Link href="/pricing?p=true">UPGRADE TO PRO</Link>
-              )}
-            </Button>
+              </Button>
+            )}
 
             {billing?.subscriptionTier === "FREE" && (
               <p className="text-muted-foreground text-xs">
