@@ -245,7 +245,10 @@ export default function Pricing() {
                   {isLoading ? "Processing..." : "Upgrade Now"}
                 </Button>
               ) : (
-                <Button className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200">
+                <Button
+                  disabled
+                  className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
+                >
                   Already on PRO
                 </Button>
               )}
