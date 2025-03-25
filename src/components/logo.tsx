@@ -2,7 +2,12 @@ import { cn } from "@/lib/utils";
 import { GitPullRequest } from "lucide-react";
 
 export const Logo = ({ className }: { className?: string }) => {
-  return <GitPullRequest className={cn("size-7 w-7", className)} />;
+  return (
+    <div className="flex items-center gap-2">
+      <GitPullRequest className={cn("size-7 w-7", className)} />
+      <p className="text-lg font-bold leading-tighter">AutoPR</p>
+    </div>
+  );
 };
 
 export const LogoStroke = ({ className }: { className?: string }) => {

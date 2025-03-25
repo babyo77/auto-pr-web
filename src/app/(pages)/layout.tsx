@@ -7,7 +7,7 @@ function layout({ children }: { children: React.ReactNode }) {
     <>
       <HeroHeader />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

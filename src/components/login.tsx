@@ -39,11 +39,11 @@ export default function LoginPage() {
             <Link href="/" aria-label="go home">
               <Logo />
             </Link>
-            <h1 className="mb-1 mt-4 text-xl font-semibold">Login</h1>
+            <h1 className="mb-1 mt-4 text-xl font-semibold"></h1>
             <p>Login to your account to continue</p>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-4">
             <Button
               type="button"
               variant="outline"

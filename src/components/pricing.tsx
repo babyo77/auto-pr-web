@@ -106,7 +106,7 @@ export default function Pricing() {
     }
   };
   return (
-    <section className="py-16 md:py-32 max-md:pt-32">
+    <section className="py-16 md:pt-32 max-md:pt-32">
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl space-y-6 text-center">
@@ -118,7 +118,7 @@ export default function Pricing() {
             <br /> From occasional use to daily development.
           </p>
 
-          <div className="flex items-center justify-center space-x-3 pt-4">
+          <div className="flex items-center justify-center space-x-3 pt-3">
             <Label htmlFor="billing-toggle" className="font-medium">
               Monthly
             </Label>
@@ -136,7 +136,7 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-6 md:mt-16 md:grid-cols-3">
+        <div className="mt-7 grid gap-6 md:mt-14 md:grid-cols-3">
           <Card>
             <CardHeader>
               <CardTitle className="font-medium">Hobby</CardTitle>
