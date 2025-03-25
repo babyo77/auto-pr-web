@@ -19,8 +19,8 @@ export default function HeroSection() {
                   Write PRs in Seconds
                 </h1>
                 <p className="mt-8 max-w-2xl text-pretty text-lg">
-                  Generate complete, professional pull requests in seconds. Save
-                  hours every week with our Chrome extension.
+                  Generate complete, professional pull requests in seconds.
+                  <br /> Save hours every week with our Chrome extension.
                 </p>
 
                 <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
