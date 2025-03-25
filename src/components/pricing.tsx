@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, X, Clock, MinusCircle, Sparkles } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import Script from "next/script";
@@ -156,13 +156,26 @@ export default function Pricing() {
 
               <ul className="list-outside space-y-3 text-sm">
                 {[
-                  "3 Free PR Message Generations",
-                  "Auto-Fill PR Description",
-                  "One-Click Generation",
+                  { text: "3 Free PR Message Generations", available: true },
+                  { text: "Auto-Fill PR Description", available: true },
+                  { text: "One-Click Generation", available: true },
+                  { text: "Readme Generation", status: "unavailable" },
+                  { text: "Priority Support", status: "unavailable" },
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <Check className="size-3" />
-                    {item}
+                    {item.available ? (
+                      <Check className="size-3" />
+                    ) : item.status === "coming" ? (
+                      <Clock className="size-3 text-muted-foreground" />
+                    ) : (
+                      <X className="size-3 text-red-500" />
+                    )}
+                    <span
+                      className={!item.available ? "text-muted-foreground" : ""}
+                    >
+                      {item.text}
+                      {item.status === "coming" && " (Coming Soon)"}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -215,15 +228,33 @@ export default function Pricing() {
 
               <ul className="list-outside space-y-3 text-sm">
                 {[
-                  "Unlimited PR Message Generations",
-                  "Auto-Fill PR Description",
-                  "One-Click Generation",
-                  "Readme Generation (Coming Soon)",
-                  "Priority Support",
+                  {
+                    text: "Unlimited PR Message Generations",
+                    status: "available",
+                  },
+                  { text: "Auto-Fill PR Description", status: "available" },
+                  { text: "One-Click Generation", status: "available" },
+                  { text: "Readme Generation", status: "coming" },
+                  { text: "Priority Support", status: "available" },
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <Check className="size-3" />
-                    {item}
+                    {item.status === "available" ? (
+                      <Check className="size-3" />
+                    ) : item.status === "coming" ? (
+                      <Sparkles className="size-3 text-amber-500" />
+                    ) : (
+                      <MinusCircle className="size-3 text-muted-foreground" />
+                    )}
+                    <span
+                      className={
+                        item.status !== "available"
+                          ? "text-muted-foreground"
+                          : ""
+                      }
+                    >
+                      {item.text}
+                      {item.status === "coming" && " (Coming Soon)"}
+                    </span>
                   </li>
                 ))}
               </ul>
