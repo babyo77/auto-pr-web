@@ -132,7 +132,7 @@ export const HeroHeader = () => {
                       setMenuState(false);
                       openSupportModal(e);
                     }}
-                    className=" max-md:text-base max-md:h-10"
+                    className=" max-md:text-base cursor-pointer max-md:h-10"
                   >
                     <span>Support</span>
                   </Button>
