@@ -113,10 +113,12 @@ export default function Pricing() {
           <h1 className="text-center text-4xl font-semibold lg:text-5xl">
             Pricing
           </h1>
-          <p>
-            Choose the plan that fits your PR workflow needs.
-            <br /> From occasional use to daily development.
-          </p>
+          <div className="max-w-xl text-center mx-auto md:max-w-[400px]">
+            <p>
+              Choose the plan that fits your PR workflow needs. From occasional
+              use to daily development.
+            </p>
+          </div>
 
           <div className="flex items-center justify-center space-x-3 pt-3">
             <Label htmlFor="billing-toggle" className="font-medium">

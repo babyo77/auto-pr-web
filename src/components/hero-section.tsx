@@ -18,9 +18,9 @@ export default function HeroSection() {
                 <h1 className="mt-8 max-w-2xl text-balance text-5xl font-semibold md:text-6xl lg:mt-16 xl:text-7xl">
                   Write PRs in Seconds
                 </h1>
-                <p className="mt-8 max-w-2xl text-pretty text-lg">
-                  Generate complete, professional pull requests in seconds.
-                  <br /> Save hours every week with our Chrome extension.
+                <p className="mt-8 max-w-2xl text-pretty text-lg md:max-w-[500px]">
+                  Generate complete, professional pull requests in seconds. Save
+                  hours every week with our Chrome extension.
                 </p>
 
                 <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
