@@ -306,7 +306,7 @@ export default function Pricing() {
                 <Link
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://cal.com/m3agency"
+                  href="https://cal.com/m3agency/auto-pr-demo"
                 >
                   Talk to Us
                 </Link>
