@@ -27,8 +27,8 @@ function layout({ children }: { children: React.ReactNode }) {
     <>
       <HeroHeader />
       {children}
-      <footer className="py-20 pb-0 @container mx-auto max-w-5xl px-6">
-        <div className="my-8 flex md:justify-between gap-6 gap-y-4 justify-center  flex-wrap px-7 md:px-48 text-base">
+      <footer className="py-20 pb-0 @container mx-auto max-w-6xl px-6">
+        <div className="my-8 flex md:justify-between gap-6 gap-y-4 justify-center flex-wrap text-base">
           <div className=" flex gap-4 flex-wrap items-center justify-center">
             {links.map((link, index) => (
               <Link
@@ -47,7 +47,7 @@ function layout({ children }: { children: React.ReactNode }) {
             made with ❤️ by babyo7_
           </Link>
         </div>
-        <div className="flex justify-center items-center text-sm md:px-10">
+        <div className="flex justify-center items-center text-sm">
           <TextHoverEffect text="m3labs" />
         </div>
       </footer>
