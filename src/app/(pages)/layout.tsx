@@ -22,8 +22,7 @@ const links = [
   },
 ];
 
-function layoTanmay — 06:09
-https://github.com/martin226/vibe-draw/tree/mainut({ children }: { children: React.ReactNode }) {
+function layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <HeroHeader />
