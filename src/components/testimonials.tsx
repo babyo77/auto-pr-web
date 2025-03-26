@@ -14,44 +14,42 @@ const testimonials: Testimonial[] = [
     role: "Design Engineer",
     image: "https://avatars.githubusercontent.com/u/71933266?v=4",
     quote:
-      "Auto-PR automatically writes pull requests that document my design and technical changes. I can focus on creating beautiful applications instead of writing PR descriptions.",
+      "Honestly, this has been a lifesaver for me. I used to dread writing PR descriptions, but now I can just focus on my actual design work. Such a relief!",
   },
   {
     name: "Meyank Singh",
     role: "DevOps Engineer",
     image: "https://avatars.githubusercontent.com/u/111943685?v=4",
     quote:
-      "Auto-PR automatically writes my pull requests with detailed explanations of infrastructure changes. No manual writing needed.",
+      "I was skeptical at first, but wow - it actually gets my infrastructure changes right! Saves me at least an hour each day of tedious documentation.",
   },
   {
     name: "Ami",
     role: "Full-Stack Developer",
     image: "https://avatars.githubusercontent.com/u/55032197?v=4",
     quote:
-      "Auto-PR automatically documents my TypeScript changes in Next.js projects. It saves me time to focus on creating stunning user experiences.",
+      "My team kept complaining about my vague PR descriptions. Not anymore! Now they're comprehensive and clear without me spending extra time on them.",
   },
   {
     name: "Zade",
     role: "Creator of vouz",
     image: "https://avatars.githubusercontent.com/u/78777405?v=4",
     quote:
-      "I just commit my code and Auto-PR writes perfect PR descriptions instantly. It saves me from explaining technical changes.",
+      "As someone who builds tools myself, I appreciate good automation. This is exactly what I needed - it just works, and the descriptions are spot on.",
   },
-
   {
     name: "Naman Rai",
     role: "Full-stack Developer",
     image: "https://avatars.githubusercontent.com/u/88327184?v=4",
     quote:
-      "Auto-PR writes my pull requests automatically based on my code changes. No more struggling to document what I've changed.",
+      "Look, I'm not great at explaining my code changes. Never have been. This tool gets it though, and somehow puts it in better words than I ever could.",
   },
-
   {
     name: "Arsdeep",
     role: "Data Scientist",
     image: "https://avatars.githubusercontent.com/u/61946367?v=4",
     quote:
-      "Auto-PR documents my Python data analysis code changes perfectly. It understands NumPy and Pandas dependencies without me explaining anything.",
+      "Working with data means constant iteration. I was drowning in PR documentation until I found this. Even catches the nuances in my Python dependencies!",
   },
 ];
 
