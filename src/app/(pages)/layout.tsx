@@ -27,7 +27,7 @@ function layout({ children }: { children: React.ReactNode }) {
     <>
       <HeroHeader />
       {children}
-      <footer className="py-20 pb-0">
+      <footer className="py-20 pb-0 @container mx-auto max-w-5xl px-6">
         <div className="my-8 flex md:justify-between gap-6 gap-y-4 justify-center  flex-wrap px-7 md:px-48 text-base">
           <div className=" flex gap-4 flex-wrap items-center justify-center">
             {links.map((link, index) => (
