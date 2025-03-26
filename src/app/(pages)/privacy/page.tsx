@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="container pt-32 mx-auto px-4 max-w-6xl px-4">
+    <div className="container pt-32 mx-auto max-w-6xl px-4">
       <h1 className="text-3xl font-bold mb-6">M3labs Privacy Policy</h1>
       <p className="text-sm text-gray-600 mb-8">Last updated on Mar 5th 2025</p>
 

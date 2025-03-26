@@ -26,20 +26,6 @@ export default function Pricing() {
   const { user, billing } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!user) return;
-    const pricingElement = document.getElementById("pricing");
-    if (pricingElement) {
-      pricingElement.scrollIntoView({ behavior: "smooth" });
-    }
-    const urlParams = new URLSearchParams(window.location.search);
-    const payment = urlParams.get("p");
-    if (payment) {
-      handlePayment();
-    }
-    urlParams.delete("payment");
-    window.history.replaceState({}, "", window.location.pathname);
-  }, [user]);
   const handlePayment = async () => {
     try {
       setIsLoading(true);
@@ -109,6 +95,20 @@ export default function Pricing() {
       setIsLoading(false);
     }
   };
+  useEffect(() => {
+    if (!user) return;
+    const pricingElement = document.getElementById("pricing");
+    if (pricingElement) {
+      pricingElement.scrollIntoView({ behavior: "smooth" });
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const payment = urlParams.get("p");
+    if (payment) {
+      handlePayment();
+    }
+    urlParams.delete("payment");
+    window.history.replaceState({}, "", window.location.pathname);
+  }, [user, handlePayment]);
   return (
     <section id="pricing">
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
