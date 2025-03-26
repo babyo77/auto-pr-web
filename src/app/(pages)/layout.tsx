@@ -40,9 +40,12 @@ function layout({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
           </div>
-          <div className="text-muted-foreground/80 md:justify-end">
-            made with ❤️ by m3labs
-          </div>
+          <Link
+            href={"/https://tanmay.xyz/"}
+            className="text-muted-foreground/80 md:justify-end"
+          >
+            made with ❤️ by babyo7_
+          </Link>
         </div>
         <div className="flex justify-center items-center text-sm md:px-10">
           <TextHoverEffect text="m3labs" />
