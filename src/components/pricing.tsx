@@ -97,13 +97,14 @@ export default function Pricing() {
   };
   useEffect(() => {
     if (!user) return;
-    const pricingElement = document.getElementById("pricing");
-    if (pricingElement) {
-      pricingElement.scrollIntoView({ behavior: "smooth" });
-    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const payment = urlParams.get("p");
     if (payment) {
+      const pricingElement = document.getElementById("pricing");
+      if (pricingElement) {
+        pricingElement.scrollIntoView({ behavior: "smooth" });
+      }
       handlePayment();
     }
     urlParams.delete("payment");
