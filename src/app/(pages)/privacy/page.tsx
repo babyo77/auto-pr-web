@@ -136,13 +136,6 @@ export default function PrivacyPolicy() {
             promotional information about third parties which we think you may
             find interesting if you tell us that you wish this to happen.
           </p>
-          <p className="mt-4">
-            If you believe that any information we are holding on you is
-            incorrect or incomplete, please write to Plot No. 6b1, Block 70
-            shankar appa nagar, pimprala Jalgaon MAHARASHTRA 425001 . or contact
-            us at or as soon as possible. We will promptly correct any
-            information found to be incorrect.
-          </p>
         </section>
 
         <section className="mt-12">
