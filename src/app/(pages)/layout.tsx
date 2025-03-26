@@ -42,7 +42,7 @@ function layout({ children }: { children: React.ReactNode }) {
           </div>
           <Link
             href={"/https://tanmay.xyz/"}
-            className="text-muted-foreground/80 md:justify-end"
+            className="text-muted-foreground/80 hover:underline-offset-4 hover:underline hover:text-primary block duration-150 md:justify-end"
           >
             made with ❤️ by babyo7_
           </Link>
