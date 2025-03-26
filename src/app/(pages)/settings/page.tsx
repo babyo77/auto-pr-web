@@ -123,7 +123,7 @@ export default function SettingsPage() {
               {billing?.subscriptionTier === "PRO" ? (
                 <span>Already on PRO</span>
               ) : (
-                <Link href="/pricing?p=true">UPGRADE TO PRO</Link>
+                <Link href="/?p=true">UPGRADE TO PRO</Link>
               )}
             </Button>
 

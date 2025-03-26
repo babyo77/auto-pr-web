@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export default function Features() {
   return (
-    <section className=" py-16 md:py-32 dark:bg-transparent max-md:pt-32">
+    <section id="features" className=" py-16">
       <div className="@container mx-auto max-w-5xl px-6">
         <div className="text-center">
           <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
@@ -14,13 +14,13 @@ export default function Features() {
         </div>
         <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
           <Card className="group shadow-zinc-950/5">
-            <CardHeader className="pb-3">
+            <CardHeader>
               <CardDecorator>
                 <Zap className="size-6" aria-hidden />
               </CardDecorator>
               <h3 className="mt-6 font-medium">One-Click Generation</h3>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pb-5">
               <p className="text-sm">
                 Generate complete PR descriptions instantly with a single button
                 press - no typing needed
@@ -29,14 +29,14 @@ export default function Features() {
           </Card>
 
           <Card className="group shadow-zinc-950/5">
-            <CardHeader className="pb-3">
+            <CardHeader>
               <CardDecorator>
                 <GitPullRequest className="size-6" aria-hidden />
               </CardDecorator>
               <h3 className="mt-6 font-medium">Auto-Fill System</h3>
             </CardHeader>
             <CardContent>
-              <p className="mt-3 text-sm">
+              <p className="text-sm">
                 Automatically populates your GitHub PR description field with
                 properly formatted content
               </p>
@@ -44,14 +44,14 @@ export default function Features() {
           </Card>
 
           <Card className="group shadow-zinc-950/5">
-            <CardHeader className="pb-3">
+            <CardHeader>
               <CardDecorator>
                 <Sparkles className="size-6" aria-hidden />
               </CardDecorator>
               <h3 className="mt-6 font-medium">AI-Powered Writing</h3>
             </CardHeader>
             <CardContent>
-              <p className="mt-3 text-sm">
+              <p className="text-sm">
                 Smart AI analyzes your changes and writes clear, professional
                 descriptions of your code updates
               </p>

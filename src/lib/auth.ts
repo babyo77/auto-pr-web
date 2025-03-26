@@ -24,6 +24,7 @@ export const signInWithGoogle = async () => {
 export const signOut = async () => {
   try {
     await firebaseSignOut(auth);
+    window.location.href = "/";
   } catch (error) {
     console.error("Error signing out", error);
     throw error;

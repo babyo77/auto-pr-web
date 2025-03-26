@@ -11,8 +11,8 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 const menuItems = [
-  { name: "Features", href: "/features" },
-  { name: "Pricing", href: "/pricing" },
+  { name: "Features", href: "#features" },
+  { name: "Pricing", href: "#pricing" },
   { name: "Github", href: "https://github.com/babyo77/auto-pr-web" },
 ];
 

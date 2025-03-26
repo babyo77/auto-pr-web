@@ -5,18 +5,25 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ChromeIcon, PlayCircle } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import Pricing from "./pricing";
+import Features from "./features-1";
+import { Cover } from "./ui/cover";
+import Testimonials from "./testimonials";
+import FAQ from "./faq";
 
 export default function HeroSection() {
   const [showDemo, setShowDemo] = useState(false);
 
   return (
-    <main className="overflow-hidden">
+    <main>
       <section>
-        <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44 max-md:pt-32">
+        <div className="pt-12 md:pb-32 lg:pb-56 lg:pt-44 max-md:pt-32">
           <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
             <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
               <h1 className="mt-8 max-w-2xl text-balance text-5xl font-semibold md:text-6xl lg:mt-16 xl:text-7xl">
-                Write PRs in Seconds
+                <span>Write PRs in </span>
+
+                <Cover>Seconds</Cover>
               </h1>
               <p className="mt-8 max-w-2xl text-pretty text-lg md:max-w-[500px]">
                 Generate complete, professional pull requests in seconds. Save
@@ -65,6 +72,10 @@ export default function HeroSection() {
           </div>
         </DialogContent>
       </Dialog>
+      <Features />
+      <Pricing />
+      <Testimonials />
+      <FAQ />
     </main>
   );
 }

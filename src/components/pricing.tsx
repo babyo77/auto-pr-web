@@ -28,6 +28,10 @@ export default function Pricing() {
 
   useEffect(() => {
     if (!user) return;
+    const pricingElement = document.getElementById("pricing");
+    if (pricingElement) {
+      pricingElement.scrollIntoView({ behavior: "smooth" });
+    }
     const urlParams = new URLSearchParams(window.location.search);
     const payment = urlParams.get("p");
     if (payment) {
@@ -106,13 +110,13 @@ export default function Pricing() {
     }
   };
   return (
-    <section className="py-16 md:pt-32 max-md:pt-32">
+    <section id="pricing">
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl space-y-6 text-center">
-          <h1 className="text-center text-4xl font-semibold lg:text-5xl">
+          <h2 className="text-center text-4xl font-semibold lg:text-5xl">
             Pricing
-          </h1>
+          </h2>
           <div className="max-w-xl text-center mx-auto md:max-w-[400px]">
             <p>
               Choose the plan that fits your PR workflow needs. From occasional
@@ -120,7 +124,7 @@ export default function Pricing() {
             </p>
           </div>
 
-          <div className="flex items-center justify-center space-x-3 pt-3">
+          <div className="flex items-center justify-center space-x-3 pt-2 md:pt-5">
             <Label htmlFor="billing-toggle" className="font-medium">
               Monthly
             </Label>
@@ -138,7 +142,7 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="mt-7 grid gap-6 md:mt-14 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:mt-16 md:grid-cols-3">
           <Card>
             <CardHeader>
               <CardTitle className="font-medium">Hobby</CardTitle>
