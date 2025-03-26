@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI PR Generator - Automated Pull Request",
+  title: "AUTO PR - Automated Pull Messages",
   description:
     "Generate professional pull request automatically. Save 30 minutes per PR using Chrome extension. Transform your GitHub workflow today.",
   keywords:
     "PR generator, pull request automation, GitHub automation, AI PR description, PR workflow, developer tools",
   openGraph: {
-    title: "AI PR Generator - Automated Pull Request Descriptions",
+    title: "AUTO PR - Automated Pull Messages",
     description:
       "Save time with AI-powered PR descriptions. Our Chrome extension automatically generates professional pull request descriptions.",
     type: "website",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI PR Generator - Automated Pull Request Descriptions",
+    title: "AUTO PR - Automated Pull Messages",
     description:
       "Save time with AI-powered PR descriptions. Transform your GitHub workflow today.",
     images: ["/og-image.png"],
