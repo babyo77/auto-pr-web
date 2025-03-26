@@ -1,6 +1,8 @@
 # Auto PR Web
 
-![Auto PR Web](https://github.com/user-attachments/assets/875636ac-7cd4-486d-ac6a-2af3bc5e949e)
+
+https://github.com/user-attachments/assets/1113eacc-252e-4391-8311-0649d632ddea
+
 
 ## Overview
 
