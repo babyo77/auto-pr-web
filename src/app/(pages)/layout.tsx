@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import { HeroHeader } from "@/components/hero8-header";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import Link from "next/link";
-
+import useClarity from "@/hook/useClarity";
 const links = [
   {
     title: "Features",
@@ -23,6 +24,7 @@ const links = [
 ];
 
 function layout({ children }: { children: React.ReactNode }) {
+  useClarity();
   return (
     <>
       <HeroHeader />
