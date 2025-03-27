@@ -212,9 +212,9 @@ export default function Pricing() {
                     }`}
                   >
                     <span className="line-through text-base text-gray-400">
-                      $3.99
+                      $2.99
                     </span>{" "}
-                    <span>$2.99</span> / mo
+                    <span>$1.99</span> / mo
                     <span className="text-sm text-gray-400">
                       {" "}
                       billed annually
@@ -227,7 +227,7 @@ export default function Pricing() {
                         : "translate-y-0 opacity-100"
                     }`}
                   >
-                    <span>$3.99</span> / mo
+                    <span>$2.99</span> / mo
                   </div>
                 </div>
               </div>
