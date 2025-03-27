@@ -1,17 +1,33 @@
 import * as React from "react";
+import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+export const Card = motion.div;
+
+export function CardWithHover({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof Card>) {
   return (
-    <div
-      data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 ",
-        className
-      )}
+    <Card
+      className={cn("relative overflow-hidden", className)}
+      whileHover={{ 
+        scale: 1.02,
+        transition: { duration: 0.2 }
+      }}
       {...props}
-    />
+    >
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        style={{ rotate: -45, scale: 1.5 }}
+        initial={{ x: "-100%" }}
+        whileHover={{ x: "100%" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      />
+      {children}
+    </Card>
   );
 }
 
@@ -82,7 +98,6 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-  Card,
   CardHeader,
   CardFooter,
   CardTitle,
