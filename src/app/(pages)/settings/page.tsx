@@ -27,7 +27,7 @@ export default function SettingsPage() {
     );
   }
   return (
-    <div className="container py-16 md:py-32 mx-auto max-w-6xl p-6 max-md:pt-28">
+    <div className="container py-16 md:py-32 mx-auto max-w-6xl p-6 max-md:pt-12">
       <div className="mb-8">
         <h1 className="text-4xl font-medium">Settings</h1>
         <p className="text-muted-foreground mt-2">
