@@ -49,10 +49,10 @@ function layout({ children }: { children: React.ReactNode }) {
             made with ❤️ by babyo7_
           </Link>
         </div>
-        <div className="flex justify-center items-center text-sm">
-          <TextHoverEffect text="m3labs" />
-        </div>
       </footer>
+      <div className="@container mx-auto max-w-[1380px]">
+        <TextHoverEffect text="m3labs" />
+      </div>
     </>
   );
 }
