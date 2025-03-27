@@ -15,6 +15,8 @@ import { Label } from "@/components/ui/label";
 import Script from "next/script";
 import { useAuth } from "@/lib/AuthContext";
 import { toast } from "sonner";
+import { motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 declare global {
   interface Window {
     Razorpay: any;
@@ -25,6 +27,7 @@ export default function Pricing() {
   const [isYearly, setIsYearly] = useState(true);
   const { user, billing } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const [showProDialog, setShowProDialog] = useState(false);
 
   const handlePayment = async () => {
     try {
@@ -73,8 +76,8 @@ export default function Pricing() {
           );
           if (!verifyResponse.ok) throw new Error("Failed to verify payment");
 
-          toast.success("Payment successful");
-          window.location.href = "/settings";
+          // Show the Pro animation when payment is successful
+          setShowProDialog(true);
         },
         prefill: {
           name: user?.displayName,
@@ -110,6 +113,13 @@ export default function Pricing() {
     urlParams.delete("payment");
     window.history.replaceState({}, "", window.location.pathname);
   }, [user, handlePayment]);
+
+  // Function to handle closing the dialog and redirecting
+  const handleProDialogClose = () => {
+    setShowProDialog(false);
+    window.location.href = "/settings";
+  };
+
   return (
     <section id="pricing">
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
@@ -341,6 +351,180 @@ export default function Pricing() {
           </Card>
         </div>
       </div>
+
+      {/* Add the ProAnimation component with updated onClick handler */}
+      <ProAnimation
+        showProDialog={showProDialog}
+        setShowProDialog={handleProDialogClose}
+      />
     </section>
   );
 }
+
+const ProAnimation = ({
+  showProDialog,
+  setShowProDialog,
+}: {
+  showProDialog: boolean;
+  setShowProDialog: (show: boolean) => void;
+}) => {
+  return (
+    <AnimatePresence mode="wait">
+      {showProDialog && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, filter: "blur(10px)" }}
+          transition={{ exit: { duration: 0.5 } }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-white via-yellow-50 to-white"
+          onClick={() => setShowProDialog(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0, filter: "blur(8px)" }}
+            transition={{
+              delay: 0.2,
+              type: "spring",
+              stiffness: 100,
+              exit: { type: "tween", duration: 0.4 },
+            }}
+            className="flex flex-col items-center"
+          >
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(10px)" }}
+              transition={{ duration: 1, exit: { duration: 0.3 } }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="url(#star-gradient)"
+                className="w-32 h-32 mb-8 star-polish shimmer-effect"
+              >
+                <defs>
+                  <radialGradient
+                    id="star-gradient"
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                    fx="50%"
+                    fy="50%"
+                  >
+                    <stop offset="0%" stopColor="#FFD700" />
+                    <stop offset="70%" stopColor="#FFC000" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </radialGradient>
+                </defs>
+                <path
+                  fillRule="evenodd"
+                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, filter: "blur(8px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="text-3xl font-semibold text-center leading-tight"
+            >
+              You Are Now Pro!
+            </motion.h2>
+
+            {/* Add glitter effect */}
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+              {Array.from({ length: 40 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    width: Math.random() * 8 + 2 + "px",
+                    height: Math.random() * 8 + 2 + "px",
+                    background: `rgba(255, ${200 + Math.random() * 55}, ${
+                      Math.random() * 80
+                    }, ${Math.random() * 0.4 + 0.6})`,
+                    boxShadow: `0 0 ${
+                      Math.random() * 6 + 2
+                    }px rgba(255, 215, 0, 0.8)`,
+                    top: Math.random() * 100 + "%",
+                    left: Math.random() * 100 + "%",
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: [0, Math.random() * 0.5 + 0.5, 0],
+                    scale: [0, Math.random() * 0.8 + 0.8, 0],
+                    y: [0, -Math.random() * 100 - 50],
+                    x: [0, (Math.random() - 0.5) * 40],
+                  }}
+                  transition={{
+                    duration: Math.random() * 3 + 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 5,
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Add blur fade gradient background */}
+            <motion.div
+              className="absolute inset-0 -z-20 "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            />
+
+            {/* Add star glow effect */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <motion.div
+                className="w-64 h-64 rounded-full blur-xl"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(255,215,0,0.6) 0%, rgba(255,225,150,0.2) 40%, rgba(255,255,255,0) 70%)",
+                }}
+                animate={{
+                  scale: [0.8, 1.1, 0.8],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
+
+            {/* Polish star with shadow and gradient */}
+            <style jsx global>{`
+              .star-polish {
+                filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+              }
+              @keyframes shimmer {
+                0% {
+                  filter: brightness(1)
+                    drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+                }
+                50% {
+                  filter: brightness(1.1)
+                    drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
+                }
+                100% {
+                  filter: brightness(1)
+                    drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+                }
+              }
+              .shimmer-effect {
+                animation: shimmer 3s infinite ease-in-out;
+              }
+            `}</style>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
