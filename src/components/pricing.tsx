@@ -15,6 +15,9 @@ import { Label } from "@/components/ui/label";
 import Script from "next/script";
 import { useAuth } from "@/lib/AuthContext";
 import { toast } from "sonner";
+import { AnimateIn } from "@/components/ui/animate-in";
+import { CardWithHover } from "@/components/ui/card";
+import { motion } from "framer-motion";
 declare global {
   interface Window {
     Razorpay: any;
@@ -125,220 +128,239 @@ export default function Pricing() {
             </p>
           </div>
 
-          <div className="flex items-center justify-center space-x-3 pt-2 md:pt-5">
+          <motion.div 
+            className="flex items-center justify-center space-x-3 pt-2 md:pt-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <Label htmlFor="billing-toggle" className="font-medium">
               Monthly
             </Label>
-            <Switch
-              id="billing-toggle"
-              checked={isYearly}
-              onCheckedChange={setIsYearly}
-            />
+            <motion.div
+              whileTap={{ scale: 0.95 }}
+            >
+              <Switch
+                id="billing-toggle"
+                checked={isYearly}
+                onCheckedChange={setIsYearly}
+              />
+            </motion.div>
             <Label htmlFor="billing-toggle" className="font-medium">
               Yearly
-              <span className="ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800"
+              >
                 Save 25%
-              </span>
+              </motion.span>
             </Label>
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-10 grid gap-6 md:mt-16 md:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-medium">Hobby</CardTitle>
+          <AnimateIn delay={0.1} from="left">
+            <CardWithHover>
+              <CardHeader>
+                <CardTitle className="font-medium">Hobby</CardTitle>
 
-              <span className="my-3 block text-2xl font-semibold">$0</span>
+                <span className="my-3 block text-2xl font-semibold">$0</span>
 
-              <CardDescription className="text-sm">
-                Perfect for occasional PRs
-              </CardDescription>
-              <Button asChild variant="default" className="mt-4 w-full">
-                <Link href="/login">Try for Free</Link>
-              </Button>
-              <span className="text-[11px] text-center -mb-4 text-muted-foreground">
-                No credit card required
+                <CardDescription className="text-sm">
+                  Perfect for occasional PRs
+                </CardDescription>
+                <Button asChild variant="default" className="mt-4 w-full">
+                  <Link href="/login">Try for Free</Link>
+                </Button>
+                <span className="text-[11px] text-center -mb-4 text-muted-foreground">
+                  No credit card required
+                </span>
+              </CardHeader>
+
+              <CardContent className="space-y-4">
+                <hr className="border-dashed" />
+
+                <ul className="list-outside space-y-3 text-sm">
+                  {[
+                    { text: "3 Free PR Message Generations", available: true },
+                    { text: "Auto-Fill PR Description", available: true },
+                    { text: "One-Click Generation", available: true },
+                    { text: "Readme Generation", status: "unavailable" },
+                    { text: "Priority Support", status: "unavailable" },
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      {item.available ? (
+                        <Check className="size-3" />
+                      ) : item.status === "coming" ? (
+                        <Clock className="size-3 text-muted-foreground" />
+                      ) : (
+                        <X className="size-3 text-red-500" />
+                      )}
+                      <span
+                        className={!item.available ? "text-muted-foreground" : ""}
+                      >
+                        {item.text}
+                        {item.status === "coming" && " (Coming Soon)"}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </CardWithHover>
+          </AnimateIn>
+
+          <AnimateIn delay={0.2}>
+            <CardWithHover className="relative bg-black text-white">
+              <span className="absolute inset-x-0 -top-3 mx-auto flex h-6 w-fit items-center rounded-full bg-black px-3 py-1 text-xs font-medium text-white ring-1 ring-inset ring-white/20 ring-offset-1 ring-offset-gray-950/5">
+                Most Popular
               </span>
-            </CardHeader>
 
-            <CardContent className="space-y-4">
-              <hr className="border-dashed" />
+              <CardHeader>
+                <CardTitle className="font-medium text-white">
+                  Professional
+                </CardTitle>
 
-              <ul className="list-outside space-y-3 text-sm">
-                {[
-                  { text: "3 Free PR Message Generations", available: true },
-                  { text: "Auto-Fill PR Description", available: true },
-                  { text: "One-Click Generation", available: true },
-                  { text: "Readme Generation", status: "unavailable" },
-                  { text: "Priority Support", status: "unavailable" },
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    {item.available ? (
-                      <Check className="size-3" />
-                    ) : item.status === "coming" ? (
-                      <Clock className="size-3 text-muted-foreground" />
-                    ) : (
-                      <X className="size-3 text-red-500" />
-                    )}
-                    <span
-                      className={!item.available ? "text-muted-foreground" : ""}
+                <div className="my-3 block text-2xl font-semibold text-white">
+                  <div className="relative h-9 overflow-hidden">
+                    <div
+                      className={`absolute transform transition-all duration-300 ${
+                        isYearly
+                          ? "translate-y-0 opacity-100"
+                          : "-translate-y-full opacity-0"
+                      }`}
                     >
-                      {item.text}
-                      {item.status === "coming" && " (Coming Soon)"}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="relative bg-black text-white">
-            <span className="absolute inset-x-0 -top-3 mx-auto flex h-6 w-fit items-center rounded-full bg-black px-3 py-1 text-xs font-medium text-white ring-1 ring-inset ring-white/20 ring-offset-1 ring-offset-gray-950/5">
-              Most Popular
-            </span>
-
-            <CardHeader>
-              <CardTitle className="font-medium text-white">
-                Professional
-              </CardTitle>
-
-              <div className="my-3 block text-2xl font-semibold text-white">
-                <div className="relative h-9 overflow-hidden">
-                  <div
-                    className={`absolute transform transition-all duration-300 ${
-                      isYearly
-                        ? "translate-y-0 opacity-100"
-                        : "-translate-y-full opacity-0"
-                    }`}
-                  >
-                    <span className="line-through text-base text-gray-400">
-                      $3.99
-                    </span>{" "}
-                    <span>$2.99</span> / mo
-                    <span className="text-sm text-gray-400">
-                      {" "}
-                      billed annually
-                    </span>
-                  </div>
-                  <div
-                    className={`absolute transform transition-all duration-300 ${
-                      isYearly
-                        ? "translate-y-full opacity-0"
-                        : "translate-y-0 opacity-100"
-                    }`}
-                  >
-                    <span>$3.99</span> / mo
+                      <span className="line-through text-base text-gray-400">
+                        $3.99
+                      </span>{" "}
+                      <span>$2.99</span> / mo
+                      <span className="text-sm text-gray-400">
+                        {" "}
+                        billed annually
+                      </span>
+                    </div>
+                    <div
+                      className={`absolute transform transition-all duration-300 ${
+                        isYearly
+                          ? "translate-y-full opacity-0"
+                          : "translate-y-0 opacity-100"
+                      }`}
+                    >
+                      <span>$3.99</span> / mo
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <CardDescription className="text-sm text-gray-400">
-                For active developers
-              </CardDescription>
+                <CardDescription className="text-sm text-gray-400">
+                  For active developers
+                </CardDescription>
 
-              {!user ? (
-                <Button
-                  asChild
-                  className="mt-4 w-full bg-white text-black hover:bg-gray-200"
-                >
-                  <Link href="/login">Get Started</Link>
+                {!user ? (
+                  <Button
+                    asChild
+                    className="mt-4 w-full bg-white text-black hover:bg-gray-200"
+                  >
+                    <Link href="/login">Get Started</Link>
+                  </Button>
+                ) : billing?.subscriptionTier !== "PRO" ? (
+                  <Button
+                    onClick={handlePayment}
+                    className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Processing..." : "Upgrade Now"}
+                  </Button>
+                ) : (
+                  <Button
+                    disabled
+                    className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
+                  >
+                    Already on PRO
+                  </Button>
+                )}
+              </CardHeader>
+
+              <CardContent className="space-y-4">
+                <hr className="border-dashed" />
+
+                <ul className="list-outside space-y-3 text-sm">
+                  {[
+                    {
+                      text: "Multiple PR Message Generations",
+                      status: "available",
+                    },
+                    { text: "Auto-Fill PR Description", status: "available" },
+                    { text: "One-Click Generation", status: "available" },
+                    { text: "Readme Generation", status: "coming" },
+                    { text: "Priority Support", status: "available" },
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      {item.status === "available" ? (
+                        <Check className="size-3" />
+                      ) : item.status === "coming" ? (
+                        <Sparkles className="size-3 text-amber-500" />
+                      ) : (
+                        <MinusCircle className="size-3 text-muted-foreground" />
+                      )}
+                      <span
+                        className={
+                          item.status !== "available"
+                            ? "text-muted-foreground"
+                            : ""
+                        }
+                      >
+                        {item.text}
+                        {item.status === "coming" && " (Coming Soon)"}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </CardWithHover>
+          </AnimateIn>
+
+          <AnimateIn delay={0.3} from="right">
+            <CardWithHover>
+              <CardHeader>
+                <CardTitle className="font-medium">Enterprise</CardTitle>
+
+                <span className="my-3 block text-2xl font-semibold">Custom</span>
+
+                <CardDescription className="text-sm">
+                  For teams and organizations
+                </CardDescription>
+
+                <Button asChild variant="default" className="mt-4 w-full">
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://cal.com/m3agency/auto-pr-demo"
+                  >
+                    Talk to Us
+                  </Link>
                 </Button>
-              ) : billing?.subscriptionTier !== "PRO" ? (
-                <Button
-                  onClick={handlePayment}
-                  className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Processing..." : "Upgrade Now"}
-                </Button>
-              ) : (
-                <Button
-                  disabled
-                  className="mt-4 w-full cursor-pointer bg-white text-black hover:bg-gray-200"
-                >
-                  Already on PRO
-                </Button>
-              )}
-            </CardHeader>
+              </CardHeader>
 
-            <CardContent className="space-y-4">
-              <hr className="border-dashed" />
+              <CardContent className="space-y-4">
+                <hr className="border-dashed" />
 
-              <ul className="list-outside space-y-3 text-sm">
-                {[
-                  {
-                    text: "Multiple PR Message Generations",
-                    status: "available",
-                  },
-                  { text: "Auto-Fill PR Description", status: "available" },
-                  { text: "One-Click Generation", status: "available" },
-                  { text: "Readme Generation", status: "coming" },
-                  { text: "Priority Support", status: "available" },
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    {item.status === "available" ? (
+                <ul className="list-outside space-y-3 text-sm text-muted-foreground">
+                  {[
+                    "Everything in Professional Plan",
+                    "Unlimited Team Members",
+                    "Direct GitHub Integration",
+                    "Diagram Generation",
+                    "Auto Analysis",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
                       <Check className="size-3" />
-                    ) : item.status === "coming" ? (
-                      <Sparkles className="size-3 text-amber-500" />
-                    ) : (
-                      <MinusCircle className="size-3 text-muted-foreground" />
-                    )}
-                    <span
-                      className={
-                        item.status !== "available"
-                          ? "text-muted-foreground"
-                          : ""
-                      }
-                    >
-                      {item.text}
-                      {item.status === "coming" && " (Coming Soon)"}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="relative">
-            <CardHeader>
-              <CardTitle className="font-medium">Enterprise</CardTitle>
-
-              <span className="my-3 block text-2xl font-semibold">Custom</span>
-
-              <CardDescription className="text-sm">
-                For teams and organizations
-              </CardDescription>
-
-              <Button asChild variant="default" className="mt-4 w-full">
-                <Link
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://cal.com/m3agency/auto-pr-demo"
-                >
-                  Talk to Us
-                </Link>
-              </Button>
-            </CardHeader>
-
-            <CardContent className="space-y-4">
-              <hr className="border-dashed" />
-
-              <ul className="list-outside space-y-3 text-sm text-muted-foreground">
-                {[
-                  "Everything in Professional Plan",
-                  "Unlimited Team Members",
-                  "Direct GitHub Integration",
-                  "Diagram Generation",
-                  "Auto Analysis",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <Check className="size-3" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </CardWithHover>
+          </AnimateIn>
         </div>
       </div>
     </section>
