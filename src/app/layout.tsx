@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AUTO PR - Write Pull Requests in seconds",
   description:
-    "Save 30 minutes per PR using AUTO PR. Write professional pull request messages. Transform your GitHub workflow today.",
+    "Save your time with AUTO PR. Write professional pull request messages. Transform your GitHub workflow today.",
   keywords:
     "PR generator, pull request automation, GitHub automation, AI PR description, PR workflow, developer tools",
   openGraph: {
