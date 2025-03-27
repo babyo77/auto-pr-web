@@ -32,7 +32,7 @@ export default function HeroSection() {
 
               <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
                 <Button asChild size="lg" className="px-5 text-base">
-                  <Link href="#link">
+                  <Link href="https://chromewebstore.google.com/detail/auto-pr/dgajcddckegcnooalnkgflofpplghfpn">
                     <ChromeIcon />
                     <span className="text-nowrap">Add to Chrome</span>
                   </Link>
