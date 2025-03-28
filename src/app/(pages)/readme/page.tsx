@@ -55,9 +55,7 @@ function ReadmePage() {
 
       const data = await response.text();
 
-      const cleanedData = data.replace(/```(markdown|readme)?\n?|```\n?/g, "");
-
-      setReadme(cleanedData);
+      setReadme(data);
     } catch (error) {
       console.error(error);
       toast.error(
