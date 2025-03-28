@@ -34,7 +34,7 @@ export default function HeroSection() {
                 <Button asChild size="lg" className="px-5 text-base">
                   <Link href="https://chromewebstore.google.com/detail/auto-pr/dgajcddckegcnooalnkgflofpplghfpn">
                     <ChromeIcon />
-                    <span className="text-nowrap">Add to Chrome</span>
+                    <span className="text-nowrap">Install Extension</span>
                   </Link>
                 </Button>
                 <Button

@@ -176,10 +176,10 @@ export default function Pricing() {
 
               <ul className="list-outside space-y-3 text-sm">
                 {[
-                  { text: "3 Free PR Message Generations", available: true },
+                  { text: "3 Free Credits", available: true },
                   { text: "Auto-Fill PR Description", available: true },
                   { text: "One-Click Generation", available: true },
-                  { text: "Readme Generation", status: "unavailable" },
+                  { text: "Readme Generation", available: true },
                   { text: "Priority Support", status: "unavailable" },
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
@@ -277,12 +277,12 @@ export default function Pricing() {
               <ul className="list-outside space-y-3 text-sm">
                 {[
                   {
-                    text: "Multiple PR Message Generations",
+                    text: "Unlimited Credits",
                     status: "available",
                   },
                   { text: "Auto-Fill PR Description", status: "available" },
                   { text: "One-Click Generation", status: "available" },
-                  { text: "Readme Generation", status: "coming" },
+                  { text: "Multiple Readme Generation", status: "available" },
                   { text: "Priority Support", status: "available" },
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
@@ -338,7 +338,7 @@ export default function Pricing() {
                   "Everything in Professional Plan",
                   "Unlimited Team Members",
                   "Direct GitHub Integration",
-                  "Diagram Generation",
+                  "Code Review",
                   "Auto Analysis",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
