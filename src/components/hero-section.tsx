@@ -20,14 +20,13 @@ export default function HeroSection() {
         <div className="pt-12 md:pb-32 lg:pb-56 lg:pt-44">
           <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
             <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
-              <h1 className="mt-8 max-w-2xl text-balance text-5xl font-semibold md:text-6xl lg:mt-16 xl:text-7xl">
-                <span>Write PRs in </span>
-
-                <Cover>Seconds</Cover>
+              <h1 className="mt-8 max-w-3xl text-balance text-5xl font-semibold md:text-6xl lg:mt-16 xl:text-7xl">
+                <span>
+                  Write <Cover>Better</Cover> PRs{" "}
+                </span>
               </h1>
               <p className="mt-8 max-w-2xl text-pretty text-lg md:max-w-[500px]">
-                Generate complete, professional pull requests in seconds. Save
-                hours every week with our Chrome extension.
+                Writing PRs is a pain. This extension makes it easier.
               </p>
 
               <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">

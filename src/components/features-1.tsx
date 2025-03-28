@@ -10,7 +10,7 @@ export default function Features() {
           <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
             Zero Manual PR Writing
           </h2>
-          <p className="mt-4">Create professional pull request in seconds</p>
+          <p className="mt-4">Write better and in seconds.</p>
         </div>
         <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
           <Card className="group shadow-zinc-950/5">

@@ -78,9 +78,7 @@ export default function WallOfLoveSection() {
             <h2 className="text-title text-4xl lg:text-5xl font-semibold">
               Loved by Developers Everywhere
             </h2>
-            <p className="text-body mt-4">
-              Perfect PR titles and descriptions, generated automatically.
-            </p>
+            <p className="text-body mt-4">What other developers are saying.</p>
           </div>
           <div className="mt-8 grid gap-3 [--color-card:var(--color-muted)] sm:grid-cols-2 md:mt-12 lg:grid-cols-3 [--color-muted:var(--color-zinc-900)]">
             {testimonialChunks.map((chunk, chunkIndex) => (

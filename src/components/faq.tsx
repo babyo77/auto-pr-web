@@ -46,9 +46,7 @@ export default function FAQ() {
             <h2 className="text-title text-4xl lg:text-5xl font-semibold">
               Frequently Asked Questions
             </h2>
-            <p className="text-body mt-4">
-              Have questions about Auto PR? We've got answers.
-            </p>
+            <p className="text-body mt-4">Have questions about Auto PR?</p>
           </div>
           <div className="mx-auto mt-12 max-w-6xl">
             <Accordion type="single" collapsible className="w-full">
