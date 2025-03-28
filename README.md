@@ -1,7 +1,6 @@
 # Auto PR - Write Better and Faster 🚀
 
 [![GitHub Stars](https://img.shields.io/github/stars/babyo77/auto-pr-web?style=social)](https://github.com/babyo77/auto-pr-web)
-[![License](https://img.shields.io/github/license/babyo77/auto-pr-web)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.2.3-blue)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-%5E5-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-%5E4-blue)](https://tailwindcss.com/)
