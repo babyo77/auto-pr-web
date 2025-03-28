@@ -282,7 +282,7 @@ export default function Pricing() {
                   },
                   { text: "Auto-Fill PR Description", status: "available" },
                   { text: "One-Click Generation", status: "available" },
-                  { text: "Multiple Readme Generation", status: "coming" },
+                  { text: "Readme Generation", status: "coming" },
                   { text: "Priority Support", status: "available" },
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
