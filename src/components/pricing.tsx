@@ -186,7 +186,7 @@ export default function Pricing() {
                     {item.available ? (
                       <Check className="size-3" />
                     ) : item.status === "coming" ? (
-                      <Clock className="size-3 text-muted-foreground" />
+                      <Sparkles className="size-3 text-amber-500" />
                     ) : (
                       <X className="size-3 text-red-500" />
                     )}
