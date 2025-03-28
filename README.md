@@ -1,127 +1,129 @@
-# Auto PR Web
+# Auto PR - Write Better and Faster 🚀
 
+[![GitHub Stars](https://img.shields.io/github/stars/babyo77/auto-pr-web?style=social)](https://github.com/babyo77/auto-pr-web)
+[![Next.js](https://img.shields.io/badge/Next.js-15.2.3-blue)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-%5E5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-%5E4-blue)](https://tailwindcss.com/)
 
-https://github.com/user-attachments/assets/1113eacc-252e-4391-8311-0649d632ddea
+Save time writing professional pull request messages with **Auto PR**. It analyzes your code changes and generates meaningful summaries in seconds. Transform your GitHub workflow today!
 
+[![Auto PR Web](https://github.com/user-attachments/assets/875636ac-7cd4-486d-ac6a-2af3bc5e949e)](https://github.com/user-attachments/assets/1113eacc-252e-4391-8311-0649d632ddea)
 
-## Overview
+## ✨ Features
 
-Auto PR Web is a powerful tool designed to help developers generate comprehensive and professional pull requests automatically. Our Chrome extension can save you approximately 30 minutes per PR by streamlining the documentation process. This web application serves as the backend and provides the core functionality for the Chrome extension.
+-   **AI-Powered Descriptions**: Uses AI to understand code context and create clear, concise PR descriptions. 🧠
+-   **One-Click Generation**: Generates complete PR descriptions instantly with a single button press. 🖱️
+-   **Customizable Instructions**: Allows you to add special instructions to tailor the README generation. 📝
+-   **Auto-Fill System**: Automatically populates your GitHub PR description field. 📤
+-   **Chrome Extension**: Seamless integration with your GitHub workflow. 🔗
+-   **Markdown Support**: Formats descriptions properly for readability. ✅
 
-**Homepage:** [https://auto-pr-web.vercel.app](https://auto-pr-web.vercel.app)
+## 🖥️ Tech Stack
 
-## Table of Contents
+-   [Next.js](https://nextjs.org/) - React framework for building performant web applications
+-   [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript that adds static typing
+-   [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for rapid UI development
+-   [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible React components
+-   [Firebase](https://firebase.google.com/) - Backend-as-a-Service (BaaS) for authentication and data storage
+-   [Lucide React](https://lucide.dev/) - Beautifully simple, pixel-perfect icons in React
+-   [Framer Motion](https://www.framer.com/motion/) - A production-ready motion library for React
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Environment Variables](#environment-variables)
-- [Usage](#usage)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Deployment](#deployment)
-- [Chrome Extension](#chrome-extension)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-
-## Features
-
-- **Automatic PR Generation**: Write pull requests in seconds.
-- **Chrome Extension**: Easy-to-use browser integration.
-- **Time-Saving**: Save an average of 30 minutes per pull request.
-- **Professional Output**: Generate well-structured, comprehensive pull requests.
-- **Customizable**: Tailor the PR generation to your specific needs.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v20 or newer)
-- pnpm
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/babyo77/auto-pr-web.git
-   cd auto-pr-web
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   pnpm install
-   ```
-
-### Environment Variables
-
-1. Create a `.env` file based on the provided example.  You'll need to configure Firebase credentials.
-
-## Usage
-
-1. Run the development server:
-
-   ```bash
-   pnpm dev
-   ```
-
-2. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
-
-## Technology Stack
-
-- **Framework**: Next.js 15
-- **UI Library**: React 19
-- **Styling**: Tailwind CSS 4
-- **Authentication**: Firebase
-- **UI Components**: Radix UI
-- **Animation**: `twa-animate-css` and `motion`
-
-## Project Structure
+## 📂 Directory Structure
 
 ```
-auto-pr-web/
-├── src/
-│   ├── app/             # Next.js app routes
-│   ├── components/      # Reusable UI components
-│   ├── lib/             # Utility functions and libraries
-│   └── public/          # Static assets
-├── .config files
-└── ...
+└── auto-pr-web/
+    ├── README.md
+    ├── components.json          # Configuration for Shadcn UI components
+    ├── eslint.config.mjs        # ESLint configuration
+    ├── next.config.ts           # Next.js configuration
+    ├── package.json             # Project dependencies and scripts
+    ├── pnpm-lock.yaml           # Dependency lockfile for pnpm
+    ├── postcss.config.mjs       # PostCSS configuration
+    ├── tsconfig.json            # TypeScript configuration
+    ├── public/                  # Static assets
+    └── src/
+        ├── app/                 # Next.js application directory
+        │   ├── globals.css      # Global CSS styles
+        │   ├── layout.tsx       # Root layout for the application
+        │   ├── (auth)/          # Authentication routes
+        │   │   └── login/       # Login page
+        │   │       └── page.tsx # Login page component
+        │   ├── (pages)/         # Application pages
+        │   │   ├── layout.tsx   # Layout for main pages
+        │   │   ├── page.tsx     # Home page component
+        │   │   ├── privacy/     # Privacy Policy page
+        │   │   │   └── page.tsx # Privacy Policy page component
+        │   │   ├── readme/      # README generator page
+        │   │   │   └── page.tsx # README generator page component
+        │   │   ├── settings/    # Settings page
+        │   │   │   └── page.tsx # Settings page component
+        │   │   └── terms/       # Terms of Service page
+        │   │       └── page.tsx # Terms of Service page component
+        │   └── api/             # API routes
+        │       └── auth/        # Authentication API routes
+        │           └── route.ts # Authentication route handler
+        ├── components/          # React components
+        │   ├── faq.tsx          # FAQ component
+        │   ├── features-1.tsx   # Features section component
+        │   ├── hero-section.tsx # Hero section component
+        │   ├── hero8-header.tsx # Header component
+        │   ├── login.tsx        # Login component
+        │   ├── logo.tsx         # Logo component
+        │   ├── pricing.tsx        # Pricing component
+        │   ├── testimonials.tsx   # Testimonials component
+        │   ├── magicui/           # Magic UI components
+        │   │   └── border-beam.tsx # Border beam component
+        │   └── ui/                # Shadcn UI components
+        │       ├── accordion.tsx    # Accordion component
+        │       ├── avatar.tsx       # Avatar component
+        │       ├── button.tsx       # Button component
+        │       ├── card.tsx         # Card component
+        │       ├── cover.tsx        # Cover component
+        │       ├── dialog.tsx       # Dialog component
+        │       ├── input.tsx        # Input component
+        │       ├── label.tsx        # Label component
+        │       ├── progressive-blur.tsx # Progressive Blur component
+        │       ├── sparkles.tsx      # Sparkles component
+        │       ├── switch.tsx         # Switch component
+        │       ├── text-hover-effect.tsx # Text Hover Effect component
+        │       └── textarea.tsx       # Textarea component
+        ├── hook/                # Custom React hooks
+        │   └── useClarity.tsx     # Clarity tracking hook
+        └── lib/                 # Utility and library files
+            ├── AuthContext.tsx    # Authentication context provider
+            ├── admin.ts           # Firebase admin SDK initialization
+            ├── auth.ts            # Authentication utilities
+            ├── firebase.ts        # Firebase client SDK initialization
+            └── utils.ts           # Utility functions
+
 ```
 
-## Deployment
+## 🛠️ Installation
 
-To build the application for production:
+1.  Install the Chrome Extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/auto-pr/dgajcddckegcnooalnkgflofpplghfpn).
+2.  Log in with your Google Account.
+3.  Navigate to a GitHub pull request.
+4.  Click the "Generate README" button and watch the magic happen! ✨
 
-```bash
-pnpm build
-pnpm start
-```
+## 🚀 Getting Started
 
-## Chrome Extension
+1.  Install the Chrome Extension
+2.  Create or Open a new pull request
+3.  Add your github URL to README generator page
+4.  Click Generate and done 🎉
 
-The Chrome extension allows users to generate pull requests directly from their GitHub interface. To get the extension:
+## 📝 Configuration
 
-1. Visit our website and click "Add to Chrome."
-2. Or install from the Chrome Web Store (link coming soon).
+-   `components.json`: Configuration for Shadcn UI components.
+-   `eslint.config.mjs`: ESLint configuration.
+-   `next.config.ts`: Next.js configuration.
+-   `postcss.config.mjs`: PostCSS configuration.
+-   `tsconfig.json`: TypeScript configuration.
 
-## Contributing
+## 🤝 Contributing
 
-We welcome contributions to Auto PR Web! Please follow these guidelines:
+Contributions are always welcome! Feel free to fork the repository and submit pull requests.
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Write tests for your changes.
-4. Submit a pull request with a clear description of your changes.
+## 📝 License
 
-## License
-
-This project is licensed under the [MIT License](LICENSE - *if a license file existed*).
-
-## Acknowledgments
-
-- Thanks to all contributors for their valuable input.
-- Special thanks to the open-source community for providing the tools and libraries used in this project.
+[MIT](LICENSE)
