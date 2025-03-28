@@ -8,7 +8,7 @@ import { GitPullRequest, Sparkles, FileText, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/lib/AuthContext";
 import { useSearchParams } from "next/navigation";
-
+import { MarkdownViewer, MarkdownEditor } from "react-github-markdown";
 export default function Page() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -54,8 +54,8 @@ function ReadmePage() {
       }
 
       const data = await response.text();
-
-      setReadme(data);
+      const formattedData = data.replace(/```markdown/g, "");
+      setReadme(formattedData);
     } catch (error) {
       console.error(error);
       toast.error(
@@ -139,29 +139,20 @@ function ReadmePage() {
       </div>
 
       {readme && !isGenerating && (
-        <div className="flex items-center justify-between mt-4">
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={openMarkdownEditor}
-              title="Open repository in new tab"
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              <span>Copy and preview</span>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                navigator.clipboard.writeText(readme);
-                toast.success("README copied to clipboard");
-              }}
-            >
-              <FileText className="mr-2 h-4 w-4" />
-              <span>Copy Markdown</span>
-            </Button>
-          </div>
+        <div className="flex items-end flex-col gap-4 justify-start mt-7">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              navigator.clipboard.writeText(readme);
+              toast.success("README copied to clipboard");
+            }}
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            <span>Copy Markdown</span>
+          </Button>
+
+          <MarkdownViewer value={readme} isDarkTheme={false} />
         </div>
       )}
     </div>
