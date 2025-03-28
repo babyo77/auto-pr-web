@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,16 @@ import { GitPullRequest, Sparkles, FileText, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/lib/AuthContext";
 import { useSearchParams } from "next/navigation";
-export default function ReadmePage() {
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ReadmePage />
+    </Suspense>
+  );
+}
+
+function ReadmePage() {
   const searchParams = useSearchParams();
   const url = searchParams.get("url");
   const inst = searchParams.get("inst");
