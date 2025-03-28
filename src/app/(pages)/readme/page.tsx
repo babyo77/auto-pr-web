@@ -139,7 +139,7 @@ function ReadmePage() {
       </div>
 
       {readme && !isGenerating && (
-        <div className="flex items-end flex-col gap-4 justify-start mt-7">
+        <div className="flex items-start flex-col gap-4 justify-start mt-7">
           <Button
             variant="outline"
             size="sm"
