@@ -34,13 +34,12 @@ function ReadmePage() {
 
     const searchParams = new URLSearchParams();
     searchParams.set("url", githubUrl);
-    searchParams.set("inst", instructions);
     const token = await user?.getIdToken();
     try {
       const response = await fetch(
         `${
           process.env.NEXT_PUBLIC_SCI_URI
-        }/sci/readme?${searchParams.toString()}`,
+        }/sci/content?${searchParams.toString()}`,
         {
           headers: {
             "x-sci-auth": `${token}`,
@@ -53,7 +52,30 @@ function ReadmePage() {
         throw new Error(error.message);
       }
 
-      const data = await response.text();
+      const content = await response.text();
+
+      const response2 = await fetch(
+        `${process.env.NEXT_PUBLIC_SCI_URI}/sci/make-readme`,
+        {
+          method: "POST",
+          headers: {
+            "x-sci-auth": `${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            url: githubUrl,
+            content,
+            inst: instructions,
+          }),
+        }
+      );
+      if (!response2.ok) {
+        const error = await response2.json();
+        throw new Error(error.message);
+      }
+
+      const data = await response2.text();
+
       const formattedData = data.replace(/```markdown/g, "");
       setReadme(formattedData);
     } catch (error) {
