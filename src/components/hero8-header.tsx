@@ -13,7 +13,7 @@ import { Textarea } from "./ui/textarea";
 const menuItems = [
   { name: "Features", href: "/#features" },
   // { name: "Pricing", href: "/#pricing" },
-  { name: "Readme", href: "/readme" },
+  // { name: "Readme", href: "/readme" },
   { name: "Github", href: "https://github.com/babyo77/auto-pr-web" },
 ];
 

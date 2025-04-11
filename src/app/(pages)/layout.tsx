@@ -9,18 +9,6 @@ const links = [
     title: "Features",
     href: "#features",
   },
-  {
-    title: "Pricing",
-    href: "#pricing",
-  },
-  {
-    title: "Privacy Policy",
-    href: "/privacy",
-  },
-  {
-    title: "Terms of Service",
-    href: "/terms",
-  },
 ];
 
 function layout({ children }: { children: React.ReactNode }) {
@@ -30,9 +18,9 @@ function layout({ children }: { children: React.ReactNode }) {
       <HeroHeader />
       {children}
       <footer className="py-20 pb-0 @container mx-auto max-w-6xl px-6">
-        <div className="my-8 flex md:justify-between gap-6 gap-y-4 justify-center flex-wrap text-base">
-          <div className=" flex gap-4 flex-wrap items-center justify-center">
-            {links.map((link, index) => (
+        <div className="my-8 flex md:justify-center gap-6 gap-y-4 justify-center flex-wrap text-base">
+          {/* <div className=" flex gap-4 flex-wrap items-center justify-center">
+            {/* {links.map((link, index) => (
               <Link
                 key={index}
                 href={link.href}
@@ -40,11 +28,11 @@ function layout({ children }: { children: React.ReactNode }) {
               >
                 <span>{link.title}</span>
               </Link>
-            ))}
-          </div>
+            ))} */}
+          {/* </div> */}
           <Link
             href={"https://tanmay.xyz/"}
-            className="text-muted-foreground/80 hover:underline-offset-4 hover:underline hover:text-primary block duration-150 md:justify-end"
+            className="text-muted-foreground/80 hover:underline-offset-4 hover:underline hover:text-primary block duration-150 md:justify-center"
           >
             made with ❤️ by babyo7_
           </Link>
