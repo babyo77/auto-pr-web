@@ -39,7 +39,7 @@ function layout({ children }: { children: React.ReactNode }) {
         </div>
       </footer>
       <div className="@container mx-auto max-w-[1380px]">
-        <TextHoverEffect text="m3labs" />
+        <TextHoverEffect text="AUTOPR" />
       </div>
     </>
   );
