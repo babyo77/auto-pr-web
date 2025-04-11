@@ -72,7 +72,7 @@ const testimonialChunks = chunkArray(
 export default function WallOfLoveSection() {
   return (
     <section>
-      <div className=" py-14 md:py-20 pb-0">
+      <div className=" py-14">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <h2 className="text-title text-4xl lg:text-5xl font-semibold">

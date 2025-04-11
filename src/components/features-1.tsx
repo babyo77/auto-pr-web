@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export default function Features() {
   return (
-    <section id="features" className=" py-16">
+    <section id="features" className=" py-16 pb-3">
       <div className="@container mx-auto max-w-5xl px-6">
         <div className="text-center">
           <h2 className="text-balance text-4xl font-semibold lg:text-5xl">

@@ -12,7 +12,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 const menuItems = [
   { name: "Features", href: "/#features" },
-  { name: "Pricing", href: "/#pricing" },
+  // { name: "Pricing", href: "/#pricing" },
   { name: "Readme", href: "/readme" },
   { name: "Github", href: "https://github.com/babyo77/auto-pr-web" },
 ];
@@ -137,7 +137,7 @@ export const HeroHeader = () => {
                   >
                     <span>Support</span>
                   </Button>
-                  {!user ? (
+                  {/* {!user ? (
                     <Button
                       asChild
                       size="sm"
@@ -160,7 +160,7 @@ export const HeroHeader = () => {
                         <span>Dashboard</span>
                       </Link>
                     </Button>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

@@ -72,7 +72,7 @@ export default function HeroSection() {
         </DialogContent>
       </Dialog>
       <Features />
-      <Pricing />
+      {/* <Pricing /> */}
       <Testimonials />
       <FAQ />
     </main>
